@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGENCE DIACKO VOYAGES POUR LE SAHEL SARL | ADVS SARL</title>
+<link rel="icon" href="logo-advs.png" type="image/png">
+<style>
+:root{--primary:#0a3d62;--secondary:#f39c12;--light:#f4f6f8;--dark:#222;}
+body{margin:0;font-family:'Segoe UI',Arial,sans-serif;background:var(--light);color:var(--dark);scroll-behavior:smooth;}
+header{background:var(--primary);color:#fff;padding:15px 10%;position:sticky;top:0;z-index:1000;}
+nav{display:flex;justify-content:space-between;align-items:center;}
+nav img{height:45px;}
+nav a{color:#fff;margin:0 12px;text-decoration:none;font-weight:600;transition:color .3s;}
+nav a:hover{color:var(--secondary);}
+.hero{height:80vh;background:linear-gradient(rgba(10,61,98,.7),rgba(10,61,98,.7)),url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;animation:fadeIn 1.5s ease;}
+.hero h1{font-size:50px;max-width:1000px;}
+section{padding:70px 10%;animation:slideUp 1.2s ease;}
+h2{color:var(--primary);margin-bottom:20px;}
+.services,.destinations,.tourism-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:25px;}
+.card,.tourism-card{background:#fff;padding:25px;border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,.08);transition:transform .3s,box-shadow .3s;cursor:pointer;overflow:hidden;}
+.card:hover,.tourism-card:hover{transform:translateY(-8px);box-shadow:0 20px 35px rgba(0,0,0,.15);}
+.btn{background:var(--secondary);color:#fff;padding:12px 25px;border-radius:30px;text-decoration:none;border:none;cursor:pointer;font-weight:600;transition:background .3s;}
+.btn:hover{background:#d68910;}
+form{max-width:600px;}
+form input,form textarea{width:100%;padding:12px;margin:12px 0;border-radius:8px;border:1px solid #ccc;font-size:15px;}
+footer{background:var(--primary);color:#fff;text-align:center;padding:25px;}
+.agence-img{transition:transform .3s, box-shadow .3s;cursor:pointer;}
+.agence-img:hover{transform:scale(1.1);box-shadow:0 8px 20px rgba(0,0,0,.4);}
+.tourism-card img{width:100%;height:180px;object-fit:cover;transition: transform .3s;}
+.tourism-card img:hover{transform:scale(1.05);}
+.tourism-card h3{margin:15px 15px 5px;color: var(--primary);}
+.tourism-card p{margin:0 15px 15px;color:#444;font-size:14px;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@media (max-width: 768px){
+  header{padding:12px 5%;}
+  nav{flex-direction:column;gap:10px;}
+  nav a{margin:6px;font-size:15px;}
+  .hero{height:60vh;padding:0 5%;}
+  .hero h1{font-size:26px;}
+  section{padding:50px 5%;}
+  h2{font-size:22px;}
+  .services,.destinations,.tourism-grid{grid-template-columns:1fr;}
+  form{width:100%;}
+  nav img{height:40px;}
+}
+@media (min-width: 1025px){
+  nav a{margin:0 18px; font-size:18px;}
+  .hero h1{font-size:50px;}
+  .services,.destinations,.tourism-grid{grid-template-columns:repeat(3,1fr);gap:30px;}
+  form{max-width:600px;}
+  .map-container iframe{height:450px;}
+}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;width:55px;height:55px;display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:28px;box-shadow:0 10px 20px rgba(0,0,0,.3);animation:pulse 2s infinite;z-index:2000;}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
+.lightbox{display:none;position:fixed;z-index:3000;padding-top:60px;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.9);}
+.lightbox-content{margin:auto;display:block;max-width:90%;max-height:80%;border-radius:12px;}
+.close{position:absolute;top:20px;right:35px;color:#fff;font-size:40px;font-weight:bold;transition:0.3s;cursor:pointer;}
+.close:hover{color:#f39c12;}
+#lang-switch{position:fixed;top:15px;right:15px;z-index:2000;display:flex;gap:5px;}
+#lang-switch .btn{padding:8px 12px;font-size:14px;}
+</style>
+</head>
+<body>
+
+<!-- Langues -->
+<div id="lang-switch">
+  <button onclick="setLang('fr')" class="btn">FR</button>
+  <button onclick="setLang('en')" class="btn">EN</button>
+  <button onclick="setLang('ar')" class="btn">AR</button>
+</div>
+
+<header>
+  <nav>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <img src="agence-advs.jpg" alt="Logo ADVS SARL">
+    </div>
+    <div>
+      <a href="#accueil" data-key="nav_accueil">Accueil</a>
+      <a href="#apropos" data-key="nav_apropos">À propos</a>
+      <a href="#services" data-key="nav_services">Services</a>
+      <a href="#autres-services" data-key="nav_autres_services">Autres services</a>
+      <a href="#destinations" data-key="nav_destinations">Destinations</a>
+      <a href="#tourisme" data-key="nav_tourisme">Tourisme</a>
+      <a href="galerie.html" data-key="nav_galerie">Galerie</a>
+      <a href="#contact" data-key="nav_contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="accueil">
+  <h1 data-key="hero_titre">AGENCE DIACKO VOYAGES POUR LE SAHEL SARL - ADVS SARL <br>Votre partenaire de voyage fiable</h1>
+</section>
+
+<section id="apropos">
+  <h2 data-key="apropos_titre">À propos de nous</h2>
+  <p data-key="apropos_texte">ADVS SARL accompagne particuliers, entreprises et institutions pour des voyages sécurisés, organisés et adaptés aux réalités du Sahel et de l’international.</p>
+</section>
+
+<section id="services">
+  <h2 data-key="services_titre">Nos services</h2>
+  <div class="services">
+    <div class="card" data-key="service_tourisme">🌍 <strong>Tourisme</strong><br>Visites guidées et lieux touristiques incontournables.</div>
+    <div class="card" data-key="service_colonies">🏕️ <strong>Colonies de vacances</strong><br>Programmes pour enfants et adolescents.</div>
+    <div class="card" data-key="service_billets">🚌 <strong>Vente billets</strong><br>Train, Bus et transport interurbain.</div>
+    <div class="card" data-key="service_location">🚗 <strong>Location de voitures</strong><br>Véhicules adaptés à vos besoins.</div>
+    <div class="card" data-key="service_formations">📚 <strong>Formations</strong><br>Ateliers et cours sur le voyage et le tourisme.</div>
+    <div class="card" data-key="service_hebergement">🏨 <strong>Hébergement</strong><br>Hôtels, auberges et maisons d’hôtes.</div>
+    <div class="card" data-key="service_restauration">🍽️ <strong>Restauration</strong><br>Restaurants, traiteurs et buffets pour vos voyages.</div>
+  </div>
+</section>
+
+<section id="autres-services">
+  <h2 data-key="autres_services_titre">Autres services – Diacko Multiples Services</h2>
+  <div class="services">
+    <div class="card" data-key="autre_commerce">🛒 <strong>Commerce général</strong><br>Vente de produits divers et fournitures.</div>
+    <div class="card" data-key="autre_btp">🏗️ <strong>Diacko BTP</strong><br>Construction, rénovation, assainissement et aménagement urbain.</div>
+    <div class="card" data-key="autre_ong">🤝 <strong>ONG Sahel Kanu</strong><br>Projets humanitaires, développement religieux et communautaire.</div>
+  </div>
+</section>
+
+<section id="destinations">
+  <h2 data-key="destinations_titre">Destinations</h2>
+  <div class="destinations">
+    <div class="card" data-key="dest_afrique">Afrique</div>
+    <div class="card" data-key="dest_europe">Europe</div>
+    <div class="card" data-key="dest_asie">Asie</div>
+    <div class="card" data-key="dest_amerique">Amériques</div>
+    <div class="card" data-key="dest_oceanie">Océanie</div>
+  </div>
+</section>
+
+<section id="tourisme">
+  <h2 data-key="tourisme_titre">Lieux de cultes et touristiques</h2>
+  <div class="tourism-grid">
+    <div class="tourism-card">
+      <img src="plaque.jpg" alt="Nioro">
+      <h3>Nioro</h3>
+      <p>Lieu touristique au Mali</p>
+    </div>
+    <div class="tourism-card">
+      <img src="arche de kabadjan.jpg" alt="Cité Siby">
+      <h3>Siby (Colline de kabadjan)</h3>
+      <p>Patrimoine Culturel National</p>
+    </div>
+    <div class="tourism-card">
+      <img src="djenne.jpg" alt="Djenné">
+      <h3>Mosquée de Djenné</h3>
+      <p>Patrimoine Culturel National</p>
+    </div>
+	
+  </div>
+</section>
+
+<section id="contact">
+  <h2 data-key="contact_titre">Contact & Réservation</h2>
+  <form onsubmit="sendWhatsApp(event)">
+    <input id="nom" placeholder="Nom complet" required>
+    <input id="tel" placeholder="Téléphone / WhatsApp" required>
+    <input id="dest" placeholder="Destination" required>
+    <textarea id="msg" placeholder="Message"></textarea>
+    <button class="btn" data-key="send">Envoyer la demande</button>
+  </form>
+  <p>📞 +223 74848499 / 64848499 / 50848499<br>✉️ entrepriediacko@gmail.com<br>🏠 Bamako Magnambougou Faso Kanu<br>📍 Nioro du Sahel – Yelimane – Kayes</p>
+</section>
+
+<footer>
+  <p>© 2025 AGENCE DIACKO VOYAGES POUR LE SAHEL SARL – ADVS SARL</p>
+</footer>
+
+<a href="https://wa.me/22374848499" target="_blank" class="whatsapp">💬</a>
+
+<script>
+function setLang(lang){
+  const translations = {
+    fr:{nav_accueil:'Accueil',nav_apropos:'À propos',nav_services:'Services',nav_autres_services:'Autres services',nav_destinations:'Destinations',nav_tourisme:'Tourisme',nav_contact:'Contact',nav_galerie:'Galerie',hero_titre:'AGENCE DIACKO VOYAGES POUR LE SAHEL SARL<br>Votre partenaire de voyage fiable',apropos_titre:'À propos de nous',apropos_texte:'ADVS SARL accompagne particuliers, entreprises et institutions pour des voyages sécurisés, organisés et adaptés aux réalités du Sahel et de l’international.',services_titre:'Nos services',autres_services_titre:'Autres services – Diacko Multiples Services',destinations_titre:'Destinations',tourisme_titre:'Lieux touristiques',contact_titre:'Contact & Réservation',send:'Envoyer la demande'},
+    en:{nav_accueil:'Home',nav_apropos:'About',nav_services:'Services',nav_autres_services:'Other Services',nav_destinations:'Destinations',nav_tourisme:'Tourism',nav_contact:'Contact',nav_galerie:'Gallery',hero_titre:'DIACKO TRAVEL AGENCY FOR THE SAHEL SARL<br>Your reliable travel partner',apropos_titre:'About Us',apropos_texte:'ADVS SARL supports individuals, businesses and institutions for safe, organized trips adapted to Sahel and international realities.',services_titre:'Our Services',autres_services_titre:'Other Services – Diacko Multiple Services',destinations_titre:'Destinations',tourisme_titre:'Tourist Places',contact_titre:'Contact & Reservation',send:'Send Request'},
+    ar:{nav_accueil:'الرئيسية',nav_apropos:'من نحن',nav_services:'الخدمات',nav_autres_services:'خدمات أخرى',nav_destinations:'الوجهات',nav_tourisme:'السياحة',nav_contact:'اتصل',nav_galerie:'المعرض',hero_titre:'وكالة سفر دياكو لمنطقة الساحل<br>شريكك الموثوق للسفر',apropos_titre:'من نحن',apropos_texte:'تدعم ADVS SARL الأفراد والشركات والمؤسسات في رحلات آمنة ومنظمة تتناسب مع واقع الساحل والدولي.',services_titre:'خدماتنا',autres_services_titre:'خدمات أخرى – خدمات متعددة من دياكو',destinations_titre:'الوجهات',tourisme_titre:'أماكن سياحية',contact_titre:'اتصل وحجز',send:'إرسال الطلب'}
+  };
+  document.querySelectorAll('[data-key]').forEach(el=>{
+    const key=el.getAttribute('data-key');
+    if(translations[lang] && translations[lang][key]){
+      el.innerHTML = translations[lang][key];
+    }
+  });
+}
+setLang('fr');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie | ADVS SARL</title>
+  <style>
+    body{
+      margin:0;
+      font-family:'Segoe UI',Arial,sans-serif;
+      background:#f4f6f8;
+      color:#222;
+    }
+
+    header{
+      background:#0a3d62;
+      color:#fff;
+      padding:15px 10%;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    nav img{
+      height:45px;
+    }
+
+    nav a{
+      background:#f39c12;
+      color:#fff;
+      padding:8px 18px;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:600;
+      transition:background .3s;
+    }
+
+    nav a:hover{
+      background:#d68910;
+    }
+
+    h2{
+      text-align:center;
+      margin:30px 0;
+      color:#0a3d62;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+      padding:0 10% 40px;
+    }
+
+    .gallery-card{
+      background:#fff;
+      padding:10px;
+      border-radius:14px;
+      box-shadow:0 10px 25px rgba(0,0,0,.08);
+      cursor:pointer;
+      overflow:hidden;
+      position:relative;
+      transition:transform .4s, box-shadow .4s;
+    }
+
+    .gallery-card:hover{
+      transform:scale(1.05);
+      box-shadow:0 20px 35px rgba(0,0,0,.25);
+    }
+
+    .gallery-card img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      border-radius:10px;
+      transition: transform .4s;
+    }
+
+    .gallery-card:hover img{
+      transform:scale(1.08);
+    }
+
+    .gallery-card p{
+      text-align:center;
+      font-weight:600;
+      margin:10px 0 0;
+      color:#0a3d62;
+      transition: color .3s, opacity .3s;
+    }
+
+    .gallery-card:hover p{
+      color:#f39c12;
+      opacity:0.9;
+    }
+
+    /* Étincelles */
+    .gallery-card::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+      background-image:radial-gradient(circle, #fff 1px, transparent 1px);
+      background-size:10px 10px;
+      opacity:0;
+      transition:opacity .4s;
+      z-index:2;
+    }
+
+    .gallery-card:hover::before{
+      opacity:0.3;
+      animation: sparkle 1s infinite linear;
+    }
+
+    @keyframes sparkle{
+      0%{background-position:0 0;}
+      100%{background-position:100px 100px;}
+    }
+
+    @media(max-width:768px){
+      .gallery-grid{padding:0 5% 30px;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <img src="agence-advs.jpg" alt="Logo ADVS">
+    <a href="index.html">← Retour à l'accueil</a>
+  </nav>
+</header>
+<!-- SECTION À PROPOS / SERVICES -->
+<section class="about">
+  <div class="about-container">
+    <div class="about-text">
+      <h2>À propos de ADVS SARL</h2>
+      <p>
+        ADVS SARL est spécialisée dans l’organisation de voyages, la promotion touristique et culturelle, ainsi que le soutien aux<br> entreprises locales.
+        Nous offrons des services sur-mesure pour les particuliers et les professionnels, incluant : <br>
+        - Organisation de circuits touristiques <br>
+        - Accompagnement culturel et patrimoine <br>
+        - Services pour entreprises (BTP, commerce, événements) <br>
+        - Assistance logistique et réservation <br>
+      </p>
+    </div>
+    <div class="about-image">
+      <img src="mam.jpg" alt="Nos services">
+	  <p>M. DIACKO (PDG ADVS SARL) </p>
+    </div>
+  </div>
+</section>
+
+<h2>Galerie des Lieux Touristiques/culturels & activités</h2>
+
+<div class="gallery-grid">
+<div class="gallery-card" onclick="openLightbox('arche de kabadjan.jpg')">
+    <img src="arche de kabadjan.jpg" alt="Image 10">
+    <p>Siby (Colline de kabadjan)</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('plaque.jpg')">
+    <img src="plaque.jpg" alt="place 11">
+    <p>Bienvenue à Nioro </p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('nianankulu.jpg')">
+    <img src="nianankulu.jpg" alt="Image 10">
+    <p>nianankulu (Koulikoro)</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('marionnetteDiarrabougou1.jpg')">
+    <img src="marionnetteDiarrabougou1.jpg" alt="Image 1">
+    <p>marionnette de Diarrabougou </p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('monumentalfarouck.jpg')">
+    <img src="monumentalfarouck.jpg" alt="place 11">
+    <p>monument alfarouck (Tombouctou)) </p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('case sac.jpg')">
+    <img src="case sac.jpg" alt="Image 2">
+    <p>Case sacré de Kangaba</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('kouloukan.jpg')">
+    <img src="kouloukan.jpg" alt="Image 3">
+    <p>Kouroukan Fuga</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('place3.jpg')">
+    <img src="place3.jpg" alt="Image 4">
+    <p>Lieux Touristiques</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('AN.jpg')">
+    <img src="AN.jpg" alt="Image 5">
+    <p>Exposition artisanale</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('place2.jpg')">
+    <img src="place2.jpg" alt="Image 6">
+    <p>Centre culturel (IKAM) </p>
+  </div>
+    <div class="gallery-card" onclick="openLightbox('comme.jpg')">
+    <img src="comme.jpg" alt="Image 7">
+    <p>DIACKO Commerce Général</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('pmm.jpg')">
+    <img src="pmm.jpg" alt="place 11">
+    <p>Entreprise DIACKO BTP</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('tiebletie.jpg')">
+    <img src="tiebletie.jpg" alt="Image 8">
+    <p>Festival culturel tiebletie de Bèlèdougou</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('maison.jpg')">
+    <img src="maison.jpg" alt="Image 9">
+    <p>Mosquée El Adj Oumar TALL de Nioro (Patrimoine National)</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('koul.jpg')">
+    <img src="koul.jpg" alt="Image 10">
+    <p>Koulikoro</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('djenne.jpg')">
+    <img src="djenne.jpg" alt="Image 10">
+    <p>Mosquée de Djenné</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('passe.jpg')">
+    <img src="passe.jpg" alt="Image 9">
+    <p>En visite à Niono</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('zan.jpg')">
+    <img src="zan.jpg" alt="Image 10">
+    <p>Restauration</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('CAN.jpg')">
+    <img src="CAN.jpg" alt="Image 10">
+    <p>En visite Dépuis Canada</p>
+	</div>
+	<div class="gallery-card" onclick="openLightbox('oeu.jpg')">
+    <img src="oeu.jpg" alt="Image 9">
+    <p>Oeuvres d'arts</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('biton.jpg')">
+    <img src="biton.jpg" alt="Image 10">
+    <p>Tombeau de Binton M COULIBALY (Ségou)</p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('main fatima garmi.jpg')">
+    <img src="main fatima garmi.jpg" alt="Image 10">
+    <p>Escalade main fatima garmi mali </p>
+  </div>
+  <div class="gallery-card" onclick="openLightbox('missi.jpg')">
+    <img src="missi.jpg" alt="Image 10">
+    <p>Grotte de Missirikoro (Sikasso) </p>
+  </div>
+  
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img">
+</div>
+<!-- PARTENAIRES -->
+<h2>Nos Partenaires</h2>
+<div class="partners-grid">
+  <div class="partner-card"><img src="partenaire1.png" alt="Espace Ideal">Espace Informatique</div>
+  <div class="partner-card"><img src="partenaire2.jpg" alt="Partenaire 2">AGENCE DE VOYAGE</div>
+</div>
+<script>
+  function openLightbox(src){
+    document.getElementById("lightbox-img").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+  }
+
+  function closeLightbox(){
+    document.getElementById("lightbox").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
